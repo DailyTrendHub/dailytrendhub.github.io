@@ -1,130 +1,80 @@
 ---
 ---
-
 @import "{{ site.theme }}";
 
-/* === Custom Dark Theme Styles === */
-
-/* === Global Styles === */
+/* === Dark Mode Base === */
 body {
   background-color: #121212;
   color: #e0e0e0;
-  font-family: 'Inter', 'Roboto', sans-serif;
-  line-height: 1.7;
+  font-family: 'Inter', sans-serif;
   margin: 0;
-  padding: 0;
+  line-height: 1.6;
 }
 
 /* === Navbar === */
-nav {
+.navbar {
   background-color: #1e1e1e;
-  border-bottom: 1px solid #2a2a2a;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  padding: 1rem 0;
-  position: sticky;
-  top: 0;
-  z-index: 100;
+  padding: 15px 30px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.4);
 }
 
-nav a {
-  color: #bbb;
-  margin: 0 20px;
-  font-weight: 500;
-  letter-spacing: 0.5px;
-  transition: color 0.3s ease;
-}
-
-nav a:hover {
-  color: #03dac6;
-}
-
-/* === Header (Site Title + Description) === */
-.site-header {
-  text-align: center;
-  margin: 3rem 0 2rem;
-}
-
-.site-title a {
+.logo a {
   color: #bb86fc;
-  font-size: 2.8rem;
-  font-weight: 700;
+  font-size: 1.5rem;
+  font-weight: 600;
   text-decoration: none;
 }
 
-.site-description {
-  color: #aaa;
-  font-size: 1.1rem;
+.nav-links a {
+  color: #e0e0e0;
+  margin-left: 20px;
+  font-weight: 500;
+  transition: color 0.3s ease;
 }
 
-/* === Posts === */
-.posts {
-  max-width: 900px;
+.nav-links a:hover {
+  color: #03dac6;
+}
+
+/* === Site Description === */
+.site-description {
+  text-align: center;
+  margin: 10px 0 30px;
+  color: #aaa;
+}
+
+/* === Content === */
+.site-content {
+  max-width: 800px;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 20px;
 }
 
 .post {
   background: #1e1e1e;
-  padding: 1.5rem;
-  margin-bottom: 1.5rem;
-  border-radius: 12px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
 }
 
-.post:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-}
-
-.post-title a {
+.post a {
   color: #bb86fc;
-  text-decoration: none;
-  font-size: 1.6rem;
 }
 
-.post-title a:hover {
+.post a:hover {
   color: #03dac6;
-}
-
-.post-meta {
-  font-size: 0.9rem;
-  color: #888;
-  margin-bottom: 0.8rem;
 }
 
 /* === Footer === */
 .site-footer {
-  background: #1e1e1e;
-  border-top: 1px solid #2a2a2a;
   text-align: center;
-  padding: 1rem 0;
-  font-size: 0.9rem;
-  color: #bbb;
-}
-
-/* === Links & Buttons === */
-a {
-  color: #bb86fc;
-}
-
-a:hover {
-  color: #03dac6;
-}
-
-/* === Responsive === */
-@media (max-width: 768px) {
-  nav {
-    flex-direction: column;
-  }
-
-  nav a {
-    margin: 10px 0;
-  }
-
-  .site-title a {
-    font-size: 2rem;
-  }
+  padding: 20px;
+  background: #1e1e1e;
+  color: #aaa;
+  margin-top: 40px;
+  border-top: 1px solid #333;
 }
