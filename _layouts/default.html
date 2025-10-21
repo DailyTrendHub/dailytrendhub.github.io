@@ -15,12 +15,18 @@
         <div class="logo">
           <a href="{{ '/' | relative_url }}">{{ site.title }}</a>
         </div>
+
+        <button class="menu-toggle" aria-label="Toggle navigation">
+          ☰
+        </button>
+
         <nav class="nav-links">
           <a href="{{ '/' | relative_url }}">Home</a>
           <a href="{{ '/about/' | relative_url }}">About</a>
           <a href="{{ '/contact/' | relative_url }}">Contact</a>
         </nav>
       </div>
+
       <p class="site-description">{{ site.description }}</p>
     </header>
 
@@ -31,5 +37,14 @@
     <footer class="site-footer">
       <p>&copy; {{ site.time | date: "%Y" }} {{ site.title }} • Built with Jekyll on GitHub Pages</p>
     </footer>
+
+    <script>
+      // Simple JS to toggle mobile menu
+      const menuToggle = document.querySelector('.menu-toggle');
+      const navLinks = document.querySelector('.nav-links');
+      menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+      });
+    </script>
   </body>
 </html>
