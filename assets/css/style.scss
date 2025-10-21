@@ -1,0 +1,17 @@
+/* Simple responsive styles inspired by Beautiful Jekyll */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  line-height: 1.6;
+  margin: 0;
+  color: #222;
+}
+.wrap { max-width: 780px; margin: 0 auto; padding: 1rem; }
+.site-header { background: #fff; padding: 1.5rem 0; border-bottom: 1px solid #eee; }
+.site-title { margin: 0; font-size: 1.6rem; }
+.site-title a { text-decoration: none; color: inherit; }
+.post { border-bottom: 1px solid #f0f0f0; padding: 1rem 0; }
+.post-title { margin: 0 0 .25rem; font-size: 1.25rem; }
+.site-footer { color: #666; font-size: .9rem; padding: 1rem 0; text-align: center; }
+@media (min-width: 900px) {
+  .site-title { font-size: 2rem; }
+}
