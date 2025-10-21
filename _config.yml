@@ -1,7 +1,7 @@
 title: Daily Trend
 description: Daily Trend — short daily posts and trends
-baseurl: "" # the subpath of your site, e.g. /repo
-url: "https://DailyTrendHub.github.io" # <- replace USERNAME with your GitHub username
+baseurl: "/dailytrendhubforyou" # the subpath of your site, e.g. /repo
+url: "https://dailytrendhub.github.io" # <- replace USERNAME with your GitHub username
 theme: minima
 plugins: [jekyll-feed]
 markdown: kramdown
