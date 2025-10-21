@@ -9,7 +9,8 @@
     {% include adsense.html %}
     <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
   </head>
-  <body>
+
+  <body class="dark-mode">
     <header class="site-header">
       <div class="navbar-container">
         <div class="logo">
@@ -22,14 +23,19 @@
           <a href="{{ '/' | relative_url }}">Home</a>
           <a href="{{ '/about/' | relative_url }}">About</a>
           <a href="{{ '/contact/' | relative_url }}">Contact</a>
+          <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">🌙</button>
         </nav>
       </div>
     </header>
 
     <main class="site-content">
       <div class="page-header">
-        <h1>{{ page.title | default: site.title }}</h1>
-        <p class="site-description">{{ site.description }}</p>
+        {% if page.title %}
+          <h1>{{ page.title }}</h1>
+        {% endif %}
+        {% if page.description %}
+          <p class="site-description">{{ page.description }}</p>
+        {% endif %}
       </div>
       {{ content }}
     </main>
@@ -44,6 +50,26 @@
       const nav = document.querySelector('.nav-links');
       toggle.addEventListener('click', () => {
         nav.classList.toggle('active');
+      });
+
+      // Theme toggle (Dark / Light)
+      const themeToggle = document.getElementById('theme-toggle');
+      const body = document.body;
+
+      // Load saved preference
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme) {
+        body.className = savedTheme;
+        themeToggle.textContent = savedTheme === 'dark-mode' ? '🌙' : '🌞';
+      }
+
+      themeToggle.addEventListener('click', () => {
+        body.classList.toggle('dark-mode');
+        body.classList.toggle('light-mode');
+
+        const currentTheme = body.classList.contains('dark-mode') ? 'dark-mode' : 'light-mode';
+        themeToggle.textContent = currentTheme === 'dark-mode' ? '🌙' : '🌞';
+        localStorage.setItem('theme', currentTheme);
       });
     </script>
   </body>
