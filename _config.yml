@@ -6,3 +6,5 @@ theme: minima
 plugins: [jekyll-feed]
 markdown: kramdown
 paginate: 5
+sass:
+  sass_dir: _sass
