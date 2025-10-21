@@ -11,14 +11,12 @@
   </head>
   <body>
     <header class="site-header">
-      <div class="navbar">
+      <div class="navbar-container">
         <div class="logo">
           <a href="{{ '/' | relative_url }}">{{ site.title }}</a>
         </div>
 
-        <button class="menu-toggle" aria-label="Toggle navigation">
-          ☰
-        </button>
+        <button class="menu-toggle" aria-label="Toggle navigation">☰</button>
 
         <nav class="nav-links">
           <a href="{{ '/' | relative_url }}">Home</a>
@@ -26,11 +24,13 @@
           <a href="{{ '/contact/' | relative_url }}">Contact</a>
         </nav>
       </div>
-
-      <p class="site-description">{{ site.description }}</p>
     </header>
 
     <main class="site-content">
+      <div class="page-header">
+        <h1>{{ page.title | default: site.title }}</h1>
+        <p class="site-description">{{ site.description }}</p>
+      </div>
       {{ content }}
     </main>
 
@@ -39,11 +39,11 @@
     </footer>
 
     <script>
-      // Simple JS to toggle mobile menu
-      const menuToggle = document.querySelector('.menu-toggle');
-      const navLinks = document.querySelector('.nav-links');
-      menuToggle.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
+      // Toggle mobile menu
+      const toggle = document.querySelector('.menu-toggle');
+      const nav = document.querySelector('.nav-links');
+      toggle.addEventListener('click', () => {
+        nav.classList.toggle('active');
       });
     </script>
   </body>
