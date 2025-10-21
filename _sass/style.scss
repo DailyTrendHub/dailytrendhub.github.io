@@ -1,7 +1,8 @@
 ---
 ---
 /* Dark Beautiful Jekyll-inspired theme */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+@use "sass:meta";
+@import "https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap";
 
 body {
   background: #121212;
