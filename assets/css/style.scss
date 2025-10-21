@@ -1,0 +1,52 @@
+---
+---
+
+@import "{{ site.theme }}";
+
+/* Add your custom styles below */
+
+/* === Dark Mode Base === */
+body {
+  background-color: #121212;
+  color: #e0e0e0;
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.6;
+}
+
+a {
+  color: #bb86fc;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #03dac6;
+  text-decoration: underline;
+}
+
+/* === Navbar === */
+nav {
+  background-color: #1e1e1e;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav a {
+  color: #fff;
+  margin-left: 15px;
+  font-weight: 500;
+}
+
+nav a:hover {
+  color: #03dac6;
+}
+
+/* === Post Card === */
+.post {
+  background: #1e1e1e;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
