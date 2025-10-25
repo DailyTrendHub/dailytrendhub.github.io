@@ -1,0 +1,67 @@
+---
+layout: default
+---
+
+<article class="story-container">
+  {% if page.image %}
+  <div class="story-hero">
+    <img src="{{ page.image | relative_url }}" alt="{{ page.title }}" class="story-image"
+         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+    <div class="story-hero-placeholder" style="display: none;">
+      <span>📰</span>
+      <h1>{{ page.title }}</h1>
+    </div>
+    <div class="story-badge-hero">Trending</div>
+  </div>
+  {% else %}
+  <div class="story-hero">
+    <div class="story-hero-placeholder">
+      <span>📰</span>
+      <h1>{{ page.title }}</h1>
+    </div>
+    <div class="story-badge-hero">Trending</div>
+  </div>
+  {% endif %}
+
+  <header class="story-header">
+    <h1 class="story-title">{{ page.title }}</h1>
+    
+    <div class="story-meta-header">
+      <span class="story-date">{{ page.date | date: "%B %d, %Y" }}</span>
+      {% if page.read_time %}
+      <span class="story-read-time">• {{ page.read_time }} min read</span>
+      {% endif %}
+      {% if page.author %}
+      <span class="story-author">• By {{ page.author }}</span>
+      {% endif %}
+    </div>
+
+    {% if page.tags %}
+    <div class="story-tags-header">
+      {% for tag in page.tags %}
+      <span class="tag">#{{ tag }}</span>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </header>
+
+  <div class="story-content">
+    {{ content }}
+  </div>
+
+  <footer class="story-footer">
+    <div class="story-navigation">
+      <a href="{{ '/trending-stories/' | relative_url }}" class="back-to-stories">← Back to Trending Stories</a>
+      <a href="{{ '/' | relative_url }}" class="back-to-home">Back to Home</a>
+    </div>
+    
+    {% if page.tags %}
+    <div class="story-tags-footer">
+      <strong>Tags:</strong>
+      {% for tag in page.tags %}
+      <a href="{{ '/tags/' | relative_url }}#{{ tag | slugify }}" class="tag-link">#{{ tag }}</a>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </footer>
+</article>

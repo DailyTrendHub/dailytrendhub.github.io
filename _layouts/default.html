@@ -4,73 +4,53 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ page.title | default: site.title }}</title>
-    <meta name="description" content="{{ page.excerpt | default: site.description }}">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    {% include adsense.html %}
+    <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | truncate: 160 }}">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
     <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="{{ '/favicon.ico' | relative_url }}" type="image/x-icon">
+    
+    {% include adsense.html %}
   </head>
 
-  <body class="dark-mode">
-    <header class="site-header">
-      <div class="navbar-container">
-        <div class="logo">
-          <a href="{{ '/' | relative_url }}">{{ site.title }}</a>
-        </div>
-
-        <button class="menu-toggle" aria-label="Toggle navigation">☰</button>
-
-        <nav class="nav-links">
-          <a href="{{ '/' | relative_url }}">Home</a>
-          <a href="{{ '/about/' | relative_url }}">About</a>
-          <a href="{{ '/contact/' | relative_url }}">Contact</a>
-          <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">🌙</button>
-        </nav>
-      </div>
-    </header>
-
+  <body class="light-mode">
+    {% include header.html %}
+    
+    <!-- Main Content -->
     <main class="site-content">
+      {% if page.title %}
       <div class="page-header">
-        {% if page.title %}
-          <h1>{{ page.title }}</h1>
-        {% endif %}
+        <h1>{{ page.title }}</h1>
         {% if page.description %}
-          <p class="site-description">{{ page.description }}</p>
+        <p class="site-description">{{ page.description }}</p>
         {% endif %}
       </div>
+      {% endif %}
+      
       {{ content }}
     </main>
 
+    <!-- Footer -->
     <footer class="site-footer">
       <p>&copy; {{ site.time | date: "%Y" }} {{ site.title }} • Built with Jekyll on GitHub Pages</p>
     </footer>
 
+    <!-- Scripts -->
     <script>
-      // Toggle mobile menu
-      const toggle = document.querySelector('.menu-toggle');
-      const nav = document.querySelector('.nav-links');
-      toggle.addEventListener('click', () => {
-        nav.classList.toggle('active');
-      });
-
-      // Theme toggle (Dark / Light)
-      const themeToggle = document.getElementById('theme-toggle');
-      const body = document.body;
-
-      // Load saved preference
-      const savedTheme = localStorage.getItem('theme');
-      if (savedTheme) {
-        body.className = savedTheme;
-        themeToggle.textContent = savedTheme === 'dark-mode' ? '🌙' : '🌞';
-      }
-
-      themeToggle.addEventListener('click', () => {
-        body.classList.toggle('dark-mode');
-        body.classList.toggle('light-mode');
-
-        const currentTheme = body.classList.contains('dark-mode') ? 'dark-mode' : 'light-mode';
-        themeToggle.textContent = currentTheme === 'dark-mode' ? '🌙' : '🌞';
-        localStorage.setItem('theme', currentTheme);
-      });
+      // Global baseurl for JavaScript
+      const SITE_BASE_URL = '{{ site.baseurl }}';
+      const SEARCH_JSON_URL = '{{ site.baseurl }}/search.json';
+       // Debug log to verify values
+      window.SITE_BASEURL = '/dailytrendhubforyou';
+      window.BASE_URL = '/dailytrendhubforyou';
+      console.log('🚀 BaseURL:', SITE_BASEURL);
+      console.log('🚀 Search URL:', SEARCH_JSON_URL);
     </script>
+    <script src="{{ '/assets/js/script.js' | relative_url }}"></script>
   </body>
 </html>

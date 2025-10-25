@@ -1,16 +1,40 @@
 ---
 layout: default
-title: Daily Trend
+title: Home
+description: Your daily dose of trending news and insights
 ---
-
-<div class="posts">
+<div class="posts-grid">
   {% for post in site.posts %}
-    <article class="post">
-      <h2 class="post-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
-      <p class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</p>
-      <div class="post-excerpt">
-        {{ post.excerpt | strip_html | truncate: 180 }}
+  <article class="post-card">
+    <a href="{{ post.url | relative_url }}">
+      {% if post.image %}
+      <img 
+        src="{{ post.image | relative_url }}" 
+        alt="{{ post.title }}" 
+        class="post-thumb"
+        onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+      <div class="post-thumb-placeholder" style="display: none;">
+        <span>📖</span>
+        <p>{{ post.title | truncate: 50 }}</p>
       </div>
-    </article>
+      {% else %}
+      <div class="post-thumb-placeholder">
+        <span>📖</span>
+        <p>{{ post.title | truncate: 50 }}</p>
+      </div>
+      {% endif %}
+    </a>
+    <div class="post-content">
+      <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+      <p class="post-date">
+        {{ post.date | date: "%B %d, %Y" }}
+        {% if post.categories %}
+        • {{ post.categories | join: ', ' }}
+        {% endif %}
+      </p>
+      <p class="excerpt">{{ post.excerpt | strip_html | truncate: 150 }}</p>
+      <a href="{{ post.url | relative_url }}" class="read-more">Read more →</a>
+    </div>
+  </article>
   {% endfor %}
 </div>

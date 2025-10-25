@@ -1,0 +1,27 @@
+<header class="site-header">
+  <div class="navbar-container">
+    <!-- Logo -->
+    <div class="logo">
+      <a href="{{ '/' | relative_url }}">{{ site.title | default: "Daily Trend Hub" }}</a>
+    </div>
+
+    <!-- Search Box -->
+    <div class="search-box" id="header-search">
+      <input type="text" id="search-input" placeholder="Search posts..." autocomplete="off">
+      <div class="search-results" id="search-results"></div>
+    </div>
+
+    <!-- Navigation Links -->
+    <nav class="nav-links">
+      <a href="{{ '/' | relative_url }}">Home</a>
+      <a href="{{ '/trending-stories/' | relative_url }}">Trending Stories</a>
+      <a href="{{ '/posts/' | relative_url }}">Posts</a>
+       <a href="{{ '/about/' | relative_url }}">About</a>
+      <a href="{{ '/contact/' | relative_url }}">Contact</a>
+      <button id="theme-toggle" class="theme-btn">🌙</button>
+    </nav>
+
+    <!-- Hamburger Menu -->
+    <button class="menu-toggle" id="hamburger-menu">☰</button>
+  </div>
+</header>

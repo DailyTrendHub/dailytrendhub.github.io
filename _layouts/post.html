@@ -1,25 +1,73 @@
 ---
 layout: default
 ---
-<article class="post">
-  <h1 class="post-title">{{ page.title }}</h1>
-  <p class="post-meta">{{ page.date | date: "%B %-d, %Y" }}</p>
 
-  <div class="post-content">
-    {{ content }}
+<article class="post-container">
+  {% if page.image %}
+  <div class="post-hero">
+    <img src="{{ page.image | relative_url }}" alt="{{ page.title }}" class="post-image"
+         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+    <div class="post-hero-placeholder" style="display: none;">
+      <span>📖</span>
+      <h1>{{ page.title }}</h1>
+    </div>
+  </div>
+  
+  <header class="post-header">
+    <h1 class="post-title">{{ page.title }}</h1>
+    <div class="post-meta-header">
+      <span class="post-date">{{ page.date | date: "%B %d, %Y" }}</span>
+      {% if page.categories.size > 0 %}
+      <span class="post-categories">• {{ page.categories | join: ', ' }}</span>
+      {% endif %}
+      {% if page.read_time %}
+      <span class="post-read-time">• {{ page.read_time }} min read</span>
+      {% endif %}
+      {% if page.author %}
+      <span class="post-author">• By {{ page.author }}</span>
+      {% endif %}
+    </div>
+  </header>
+
+  {% else %}
+  
+  <header class="post-header no-image">
+    <h1 class="post-title">{{ page.title }}</h1>
+    <div class="post-meta-header">
+      <span class="post-date">{{ page.date | date: "%B %d, %Y" }}</span>
+      {% if page.categories.size > 0 %}
+      <span class="post-categories">• {{ page.categories | join: ', ' }}</span>
+      {% endif %}
+      {% if page.read_time %}
+      <span class="post-read-time">• {{ page.read_time }} min read</span>
+      {% endif %}
+      {% if page.author %}
+      <span class="post-author">• By {{ page.author }}</span>
+      {% endif %}
+    </div>
+  </header>
+
+  {% endif %}
+
+  <div class="post-body">
+    <div class="post-content-wrapper">
+      {{ content }}
+    </div>
   </div>
 
-  <!-- Example ad spot inside post -->
-  <div class="ad-spot">
-    <!-- You can add AdSense ad units here; see README for guidance -->
-    <ins class="adsbygoogle"
-         style="display:block"
-         data-ad-client="YOUR_ADSENSE_PUBLISHER_ID"
-         data-ad-slot="1234567890"
-         data-ad-format="auto"
-         data-full-width-responsive="true"></ins>
-    <script>
-         (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
-  </div>
+  <footer class="post-footer">
+    <div class="post-navigation">
+      <a href="{{ '/' | relative_url }}" class="back-to-home">← Back to Home</a>
+      <a href="{{ '/posts/' | relative_url }}" class="back-to-posts">All Posts</a>
+    </div>
+    
+    {% if page.categories %}
+    <div class="post-categories-footer">
+      <strong>Categories:</strong>
+      {% for category in page.categories %}
+      <a href="{{ '/categories/' | relative_url }}#{{ category | slugify }}" class="category-link">{{ category }}</a>{% unless forloop.last %}, {% endunless %}
+      {% endfor %}
+    </div>
+    {% endif %}
+  </footer>
 </article>
