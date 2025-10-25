@@ -22,10 +22,6 @@ exclude:
   - README.md
   - vendor
 
-# Add these for better functionality
-sass:
-  sass_dir: assets/css
-
 collections:
   posts:
     output: true
