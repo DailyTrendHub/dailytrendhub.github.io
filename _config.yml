@@ -13,6 +13,10 @@ paginate_path: "/page:num"
 plugins:
   - jekyll-feed
   - jekyll-paginate
+sass:
+  sass_dir: assets/css
+  style: compressed  # Minifies CSS for better performance
+  sourcemap: never   # Disables sourcemaps in production
 
 # Exclude files/folders that don't need to be built
 exclude:
@@ -54,3 +58,4 @@ defaults:
 include:
   - _pages
   - _stories
+  - _includes
